@@ -1,66 +1,208 @@
-// COUNTDOWN
-const raceDate = new Date("2026-05-01T18:00:00");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-function updateCountdown() {
-  const now = new Date();
-  const diff = raceDate - now;
+body {
+  font-family: 'Orbitron', sans-serif;
+  color: white;
+  background: linear-gradient(180deg, #000000, #0a0a0a);
+  overflow-x: hidden;
+}
 
-  if (diff <= 0) {
-    document.getElementById("countdown").innerText = "Futam elkezdődött!";
-    return;
+/* 🔴 NAVBAR */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255,0,0,0.2);
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: bold;
+  color: red;
+  text-shadow: 0 0 10px red;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #ccc;
+  transition: 0.3s;
+  position: relative;
+}
+
+nav a:hover {
+  color: white;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: red;
+  left: 0;
+  bottom: -5px;
+  transition: 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* 🏁 HERO */
+.hero {
+  height: 100vh;
+  background: url("assets/bg.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(0,0,0,0.5), black);
+}
+
+.hero-content {
+  text-align: center;
+  z-index: 2;
+  animation: fadeIn 1.5s ease;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  letter-spacing: 2px;
+}
+
+#countdown {
+  font-size: 3.5rem;
+  margin-top: 20px;
+  color: red;
+  text-shadow: 0 0 15px red;
+}
+
+/* ✨ KÁRTYÁK */
+.card {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 15px auto;
+  max-width: 600px;
+  border: 1px solid rgba(255,0,0,0.2);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(255,0,0,0.3);
+}
+
+/* 📰 NEWS */
+.news {
+  padding: 100px 20px;
+}
+
+.news h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+#news-container div {
+  @extend .card;
+}
+
+/* 📄 OLDAL */
+.page {
+  padding-top: 120px;
+  padding-bottom: 50px;
+  text-align: center;
+  min-height: 100vh;
+}
+
+/* 🔴 BUTTON */
+button {
+  background: linear-gradient(45deg, red, darkred);
+  border: none;
+  padding: 12px 25px;
+  margin: 10px;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px red;
+}
+
+/* 🤝 PARTNER */
+.partner {
+  @extend .card;
+}
+
+/* 📺 IFRAME */
+iframe {
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+/* ⚡ ANIM */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 📱 MOBILE */
+@media (max-width: 768px) {
+
+  nav {
+    display: none;
+    flex-direction: column;
+    background: black;
+    position: absolute;
+    top: 70px;
+    width: 100%;
   }
 
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-
-  document.getElementById("countdown").innerText =
-    `${days} nap ${hours} óra`;
-}
-
-setInterval(updateCountdown, 1000);
-
-// MENU
-function toggleMenu() {
-  document.getElementById("nav").classList.toggle("active");
-}
-
-// HÍREK
-function loadNews() {
-  const news = JSON.parse(localStorage.getItem("news")) || [];
-  const container = document.getElementById("news-container");
-
-  if (container) {
-    if (news.length === 0) {
-      container.innerHTML = "<p>Nincsenek még hírek.</p>";
-      return;
-    }
-
-    news.forEach(n => {
-      const div = document.createElement("div");
-      div.innerHTML = `<h3>${n.title}</h3><p>${n.text}</p>`;
-      container.appendChild(div);
-    });
+  nav.active {
+    display: flex;
   }
-}
 
-loadNews();
+  nav a {
+    padding: 15px;
+  }
 
-// BAJNOKSÁGOK
-function showCategory(cat) {
-  const content = document.getElementById("category-content");
+  .menu-toggle {
+    display: block;
+  }
 
-  content.innerHTML = `
-    <h2>${cat.toUpperCase()}</h2>
-    <p>Naptár:</p>
-    <ul>
-      <li>Monaco</li>
-      <li>Silverstone</li>
-    </ul>
+  .hero h1 {
+    font-size: 2rem;
+  }
 
-    <p>Tabella:</p>
-    <ol>
-      <li>Driver 1</li>
-      <li>Driver 2</li>
-    </ol>
-  `;
+  #countdown {
+    font-size: 2rem;
+  }
 }
