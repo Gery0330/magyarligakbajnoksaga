@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MLB - Magyar Ligák Bajnoksága</title>
+
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header>
+  <div class="logo">MLB</div>
+
+  <nav id="nav">
+    <a href="#">Kezdőlap</a>
+    <a href="#">Bajnokságok</a>
+    <a href="#">Live</a>
+    <a href="#">Hírek</a>
+    <a href="#">Hall of Fame</a>
+    <a href="#">Partnerek</a>
+  </nav>
+
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+</header>
+
+<!-- HERO (COUNTDOWN) -->
+<section class="hero">
+  <div class="overlay"></div>
+
+  <div class="hero-content">
+    <h1>Következő Futam</h1>
+    <div id="countdown">Betöltés...</div>
+  </div>
+</section>
+
+<!-- HÍREK -->
+<section class="news">
+  <h2>Legfrissebb hírek</h2>
+  <div id="news-container"></div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 MLB - Magyar Ligák Bajnoksága</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
