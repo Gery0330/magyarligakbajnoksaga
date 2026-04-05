@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">MLB</div>
+  <nav id="nav">
+    <a href="../index.html">Kezdőlap</a>
+    <a href="bajnoksagok.html">Bajnokságok</a>
+    <a href="live.html">Live</a>
+    <a href="hirek.html">Hírek</a>
+    <a href="hof.html">Hall of Fame</a>
+    <a href="partnerek.html">Partnerek</a>
+  </nav>
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+</header>
+
+<section class="page">
+  <h1>Bajnokságok</h1>
+
+  <div class="categories">
+    <button onclick="showCategory('f1')">F1</button>
+    <button onclick="showCategory('f2')">F2</button>
+  </div>
+
+  <div id="category-content"></div>
+</section>
+
+<script src="../script.js"></script>
+</body>
+</html>
