@@ -129,7 +129,13 @@ nav a:hover::after {
 }
 
 #news-container div {
-  @extend .card;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 15px auto;
+  max-width: 600px;
+  border: 1px solid rgba(255,0,0,0.2);
 }
 
 /* 📄 OLDAL */
@@ -159,7 +165,13 @@ button:hover {
 
 /* 🤝 PARTNER */
 .partner {
-  @extend .card;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 15px auto;
+  max-width: 500px;
+  border: 1px solid rgba(255,0,0,0.2);
 }
 
 /* 📺 IFRAME */
