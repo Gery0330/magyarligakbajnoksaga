@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - MLB</title>
+
+  <link rel="stylesheet" href="../styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <img src="../assets/logo.png">
+  </div>
+
+  <nav id="nav">
+    <a href="../index.html">Kezdőlap</a>
+    <a href="bajnoksagok.html">Bajnokságok</a>
+    <a href="live.html">Live</a>
+    <a href="hirek.html">Hírek</a>
+    <a href="hof.html">Hall of Fame</a>
+    <a href="partnerek.html">Partnerek</a>
+  </nav>
+</header>
+
+<section class="page">
+
+  <h1>🔐 Admin Panel</h1>
+
+  <div id="login">
+    <input id="password" placeholder="Admin jelszó">
+    <button onclick="login()">Belépés</button>
+  </div>
+
+  <div id="admin-content" style="display:none;">
+
+    <!-- KATEGÓRIA -->
+    <select id="category">
+      <option value="f1">F1</option>
+      <option value="f2">F2</option>
+    </select>
+
+    <hr>
+
+    <!-- PONTÁLLÁS -->
+    <h2>🏆 Pontállás</h2>
+    <input id="driver" placeholder="Versenyző">
+    <input id="team" placeholder="Csapat">
+    <input id="points" placeholder="Pont">
+    <button onclick="addDriver()">Hozzáadás</button>
+
+    <hr>
+
+    <!-- NAPTÁR -->
+    <h2>📅 Versenynaptár</h2>
+    <input id="track" placeholder="Pálya">
+    <input id="date" placeholder="Dátum">
+    <button onclick="addRace()">Hozzáadás</button>
+
+  </div>
+
+</section>
+
+<script src="../script.js"></script>
+
+<script>
+// SUPABASE INIT
+const supabase = window.supabase.createClient(
+  "YOUR_URL",
+  "YOUR_KEY"
+);
+
+// LOGIN
+const ADMIN_CODE = "MLBZq7!Lp9#Vm2$KxR8@MLB";
+
+function login() {
+  const pass = document.getElementById("password").value;
+
+  if (pass === ADMIN_CODE) {
+    document.getElementById("login").style.display = "none";
+    document.getElementById("admin-content").style.display = "block";
+  } else {
+    alert("Hibás jelszó");
+  }
+}
+
+// ADD DRIVER
+async function addDriver() {
+  const driver = document.getElementById("driver").value;
+  const team = document.getElementById("team").value;
+  const points = document.getElementById("points").value;
+  const category = document.getElementById("category").value;
+
+  await supabase.from("standings").insert([
+    { driver, team, points, category }
+  ]);
+
+  alert("Hozzáadva!");
+}
+
+// ADD RACE
+async function addRace() {
+  const track = document.getElementById("track").value;
+  const date = document.getElementById("date").value;
+  const category = document.getElementById("category").value;
+
+  await supabase.from("calendar").insert([
+    { track, date, category }
+  ]);
+
+  alert("Hozzáadva!");
+}
+</script>
+
+</body>
+</html>
