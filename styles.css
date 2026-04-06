@@ -16,7 +16,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 40px;
+  padding: 8px 30px; /* kisebb lett */
+  height: 60px;      /* fix magasság */
   background: rgba(0,0,0,0.7);
   backdrop-filter: blur(10px);
   position: fixed;
@@ -26,13 +27,14 @@ header {
 }
 
 .logo {
-  font-size: 26px;
+  font-size: 20px;
   font-weight: bold;
   color: red;
   text-shadow: 0 0 10px red;
 }
 
 nav a {
+  font-size: 14px;
   margin: 0 15px;
   text-decoration: none;
   color: #ccc;
@@ -80,7 +82,7 @@ header {
 }
 
 body {
-  padding-top: 80px;
+  padding-top: 60px;
 }
 
 .overlay {
