@@ -101,7 +101,7 @@ function loadNews() {
 // ADMIN SHORTCUT
 document.addEventListener("keydown", function(e) {
   if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "a") {
-    window.location.href = "/REPO-NEVED/pages/admin.html";
+    window.location.href = "/magyarligakbajnoksaga/pages/admin.html";
   }
 });
 
