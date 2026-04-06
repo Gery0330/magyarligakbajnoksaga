@@ -1,5 +1,5 @@
 // COUNTDOWN
-const raceDate = new Date("2026-05-01T18:00:00");
+const raceDate = new Date("2026-04-10T18:00:00");
 
 function updateCountdown() {
   const now = new Date();
