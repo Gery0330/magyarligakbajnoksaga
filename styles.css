@@ -33,6 +33,11 @@ header {
   text-shadow: 0 0 10px red;
 }
 
+.logo img {
+  height: 40px;
+  object-fit: contain;
+}
+
 nav a {
   font-size: 20px;
   margin: 0 15px;
