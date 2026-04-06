@@ -35,7 +35,12 @@ header {
 
 .logo img {
   height: 40px;
-  object-fit: contain;
+  transition: 0.3s;
+}
+
+.logo img:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 10px red);
 }
 
 nav a {
