@@ -77,10 +77,6 @@ nav a:hover::after {
   position: relative;
 }
 
-header {
-  height: 80px;
-}
-
 body {
   padding-top: 60px;
 }
@@ -150,7 +146,7 @@ body {
 
 /* 📄 OLDAL */
 .page {
-  padding-top: 120px;
+  padding-top: 70px;
   padding-bottom: 50px;
   text-align: center;
   min-height: 100vh;
