@@ -101,7 +101,13 @@ function loadNews() {
 // ADMIN SHORTCUT
 document.addEventListener("keydown", function(e) {
   if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "a") {
-    window.location.href = "pages/admin.html";
+
+    if (window.location.pathname.includes("/pages/")) {
+      window.location.href = "admin.html";
+    } else {
+      window.location.href = "pages/admin.html";
+    }
+
   }
 });
 
